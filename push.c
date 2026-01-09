@@ -6,13 +6,13 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:41:14 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/08 18:15:04 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/09 20:51:24 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push(t_stack_node **a, t_stack_node **b)
+static void push(t_stack_node **a, t_stack_node **b)
 {
     t_stack_node *tmp;
 

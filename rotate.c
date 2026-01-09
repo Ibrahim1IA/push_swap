@@ -1,44 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 18:12:50 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/09 20:53:54 by iissoufo         ###   ########.fr       */
+/*   Created: 2026/01/08 18:43:31 by iissoufo          #+#    #+#             */
+/*   Updated: 2026/01/09 20:50:46 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void swap(t_stack_node **stack)
+static void rotate(t_stack_node **stack)
 {
-    t_stack_node *tmp;
+    t_stack_node *last;
 
-    if (!*stack || !(*stack)->next)
+    if (*stack == NULL || (*stack)->next == NULL)
         return ;
-    tmp = *stack;
-    *stack = (*stack)->next;
-    if ((*stack)->next != NULL)
-        (*stack)->next->prev = tmp;
-    tmp->next = (*stack)->next;
-    tmp->prev = *stack;
+    last = find_last(*stack);
+    last->next = *stack;
+    (*stack)->prev = last;
+    (*stack) = (*stack)->next;
     (*stack)->prev = NULL;
-    (*stack)->next = tmp;
-}
-void    sa(t_stack_node **a)
-{
-    swap(a);
+    last->next->next = NULL;
 }
 
-void    sb(t_stack_node **b)
+void    ra(t_stack_node **a)
 {
-    swap(b);
+    rotate(a);
 }
 
-void    ss(t_stack_node **a, t_stack_node **b)
+void    rb(t_stack_node **b)
 {
-    swap(a);
-    swap(b);
+    rotate(b);
+}
+
+void    rr(t_stack_node **a, t_stack_node **b)
+{
+    rotate(a);
+    rotate(b);
 }
