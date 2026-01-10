@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 23:10:49 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/01 23:47:03 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:32:24 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_stack_node    *find_min(t_stack_node *s)
     return (n_min);
 }
 
-t_stack_node    *find_min(t_stack_node *s)
+t_stack_node    *find_max(t_stack_node *s)
 {
     long    max;
     t_stack_node    *n_max;

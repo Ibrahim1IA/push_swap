@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 22:43:58 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/02 00:19:57 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/10 18:41:30 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,28 @@ static void append_node(t_stack_node **s, int n)
         node->prev = last_node;
     }
 }
-void    init_stack_a(t_stack_node **a, char **av)
+
+static int	ft_atol(const char *nptr)
+{
+	long	nbr;
+	int		i;
+	int		s;
+
+	i = 0;
+	s = 1;
+	nbr = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+		if (nptr[i++] == '-')
+			s = -s;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		nbr = (nbr * 10) + (nptr[i++] - 48);
+	}
+	return ((int)(nbr * s));
+}
+/* void    init_stack_a(t_stack_node **a, char **av)
 {
     int nbr;
     int i;
@@ -51,6 +72,19 @@ void    init_stack_a(t_stack_node **a, char **av)
             free_errors(a);
         if (duplicate_error(a))
             free_errors(a);
+        append_node(a, (int)nbr);
+        i++;  
+    }
+} */
+void    init_stack_a(t_stack_node **a, char **av)
+{
+    int nbr;
+    int i;
+
+    i = 0;
+    while (av[i])
+    {
+        nbr = ft_atol(av[i]);
         append_node(a, (int)nbr);
         i++;  
     }
