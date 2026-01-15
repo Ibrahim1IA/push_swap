@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 22:43:58 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/10 18:41:30 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/15 01:48:04 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,18 @@ static int	ft_atol(const char *nptr)
 	}
 	return ((int)(nbr * s));
 }
+t_stack_node    *get_cheapest(t_stack_node *stack)
+{
+    if (!stack)
+        return (NULL);
+    while(stack)
+    {
+        if (stack->cheapest)
+            return (stack);
+        stack = stack->next;
+    }
+    return (NULL);
+}
 /* void    init_stack_a(t_stack_node **a, char **av)
 {
     int nbr;
@@ -87,5 +99,26 @@ void    init_stack_a(t_stack_node **a, char **av)
         nbr = ft_atol(av[i]);
         append_node(a, (int)nbr);
         i++;  
+    }
+}
+
+void    bring_on_top(t_stack_node **stack, t_stack_node *top, bool i)
+{
+    while (*stack != top)
+    {
+        if (!i)
+        {
+            if(top->above_median)
+                ra(stack,false);
+            else
+                rra(stack, false);
+        }
+        else
+        {
+            if(top->above_median)
+                rb(stack, false);
+            else
+                rrb(stack, false);
+        }
     }
 }

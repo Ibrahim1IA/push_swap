@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 15:58:26 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/09 20:51:06 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/15 00:08:55 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,24 @@ static void reverse_rotate(t_stack_node **stack)
     (*stack) = (*stack)->prev;
 }
 
-void    rra(t_stack_node **a)
+void    rra(t_stack_node **a, bool print)
 {
     reverse_rotate(a);
+    if (!print)
+        write(1, "rra\n", 4);
 }
 
-void    rrb(t_stack_node **b)
+void    rrb(t_stack_node **b, bool print)
 {
     reverse_rotate(b);
+    if (!print)
+        write(1, "rrb\n", 4);
 }
 
-void    rrr(t_stack_node **a, t_stack_node **b)
+void    rrr(t_stack_node **a, t_stack_node **b, bool print)
 {
     reverse_rotate(a);
     reverse_rotate(b);
+    if (!print)
+        write(1, "rrr\n", 4);
 }

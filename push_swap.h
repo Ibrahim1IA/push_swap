@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 21:13:12 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/10 18:41:16 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/15 01:48:15 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,31 @@ typedef struct s_stack_node
 	struct s_stack_node *target_node;
 }	t_stack_node;
 
-void    ra(t_stack_node **a);
-void    rb(t_stack_node **b);
-void	sa(t_stack_node **a);
-void	sb(t_stack_node **b);
-void    rra(t_stack_node **a);
-void    rrb(t_stack_node **b);
-void	ss(t_stack_node **a, t_stack_node **b);
-void	pa(t_stack_node **a, t_stack_node **b);
-void	pb(t_stack_node **a, t_stack_node **b);
-void    rr(t_stack_node **a, t_stack_node **b);
-void    rrr(t_stack_node **a, t_stack_node **b);
+void    ra(t_stack_node **a, bool print);
+void    rb(t_stack_node **b, bool print);
+void	sa(t_stack_node **a, bool print);
+void	sb(t_stack_node **b, bool print);
+void    rra(t_stack_node **a, bool print);
+void    rrb(t_stack_node **b, bool print);
+void	ss(t_stack_node **a, t_stack_node **b, bool print);
+void	pa(t_stack_node **a, t_stack_node **b, bool print);
+void	pb(t_stack_node **a, t_stack_node **b, bool print);
+void    rr(t_stack_node **a, t_stack_node **b, bool print);
+void    rrr(t_stack_node **a, t_stack_node **b, bool print);
+
+void    three_sort(t_stack_node **a);
+void    sort_stack(t_stack_node **a, t_stack_node **b);
 
 int	stack_lenght(t_stack_node *s);
 bool	stack_sorted(t_stack_node *s);
 t_stack_node    *find_min(t_stack_node *s);
 t_stack_node    *find_max(t_stack_node *s);
 t_stack_node    *find_last(t_stack_node *s);
+t_stack_node    *get_cheapest(t_stack_node *stack);
 
 void    init_stack_a(t_stack_node **a, char **av);
+void    bring_on_top(t_stack_node **stack, t_stack_node *top, bool i);
+
 
 
 #endif
