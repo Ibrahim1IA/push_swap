@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:14:26 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/15 01:45:40 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/15 17:54:46 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ void    sort_stack(t_stack_node **a, t_stack_node **b)
         pa(a, b, false);
     while (len-- > 3 && !stack_sorted(*a))
     {
-        init_a_to_b(*a, *b);
+        init_a(*a, *b);
         push_cheapest_to_b(a, b);
     }
     three_sort(a);
     while (*b)
     {
-        init_b_to_a(*a, *b);
+        init_b(*a, *b);
         bring_on_top(a, (*b)->target_node, false);
         pa(a, b, false);
     }
