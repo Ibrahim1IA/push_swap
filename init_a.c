@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 17:54:51 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/16 02:49:11 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/16 03:08:27 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void refresh_index(t_stack_node *stack)
         i++;
     }
 }
-t_stack_node    *get_target_node_a(int nbr, t_stack_node *b)
+static t_stack_node    *get_target_node_a(int nbr, t_stack_node *b)
 {
     t_stack_node *stack;
     t_stack_node *target_node;
-    int closest_smaller;
+    long closest_smaller;
 
-    closest_smaller = 0;
+    closest_smaller = LONG_MIN;
     stack = b;
     while (stack)
     {
@@ -47,12 +47,12 @@ t_stack_node    *get_target_node_a(int nbr, t_stack_node *b)
             target_node = stack;
         }
     }
-    if (target_node == LONG_MIN)
+    if (closest_smaller == LONG_MIN)
             target_node = find_max(b);
     return target_node;
 }
 
-int    get_push_cost(t_stack_node *a, t_stack_node *b)
+static int    get_push_cost(t_stack_node *a, t_stack_node *b)
 {
     int index_a;
     int index_b;

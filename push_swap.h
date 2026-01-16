@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 21:13:12 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/15 01:48:15 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/16 03:03:37 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ t_stack_node    *get_cheapest(t_stack_node *stack);
 
 void    init_stack_a(t_stack_node **a, char **av);
 void    bring_on_top(t_stack_node **stack, t_stack_node *top, bool i);
+void    set_cheapest(t_stack_node *stack);
+void	refresh_index(t_stack_node *stack);
+void	init_a(t_stack_node *a, t_stack_node *b);
 
 
 
