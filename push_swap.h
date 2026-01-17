@@ -55,6 +55,7 @@ void    bring_on_top(t_stack_node **stack, t_stack_node *top, bool i);
 void    set_cheapest(t_stack_node *stack);
 void	refresh_index(t_stack_node *stack);
 void	init_a(t_stack_node *a, t_stack_node *b);
+void    init_b(t_stack_node *a, t_stack_node *b);
 
 
 

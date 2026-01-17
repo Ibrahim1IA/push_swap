@@ -12,22 +12,41 @@ void aff(t_stack_node *a, t_stack_node *b)
     printf("-------------- Stack B --------------\n");
     while (b)
     {
-        printf("\t%d\n", b->nbr);
+        printf("\tIndex : %d\tNbr :%d\tTarget node : %d\n", b->index, b->nbr, b->target_node->nbr);
         b = b->next;
     }
 }
+
+void	free_stack(t_stack_node **stack)
+{
+	t_stack_node	*tmp;
+	t_stack_node	*current;
+
+	if (!stack || !*stack)
+		return ;
+
+	current = *stack;
+	while (current)
+	{
+		tmp = current->next;
+		free(current);
+		current = tmp;
+	}
+	*stack = NULL;
+}
+
 int main(int ac, char **av)
 {
-    (void)ac;
-    t_stack_node *a= NULL;
+    t_stack_node *a = NULL;
     t_stack_node *b = NULL;
-    init_stack_a(&a, av +1);
-    pb(&a, &b, true);
-    pb(&a, &b, true);
-    pb(&a, &b, true);
-    pb(&a, &b, true);
-    init_a(a, b);
+
+    if (ac < 2)
+        return (0);
+
+    init_stack_a(&a, av + 1);
+    sort_stack(&a, &b);
     aff(a, b);
-//gcc -Wall -Wextra -Werror stack_init.c stack_utils.c push.c swap.c reverse_rotatate.c rotate.c main.c init_a.c
-//./a.out 42 2 58 41 38 96 4 523 10 18 98 64 33 73
+    free_stack(&a);
+
+    return (0);
 }

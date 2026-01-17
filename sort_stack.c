@@ -18,8 +18,9 @@ static void    verif_min_on_top(t_stack_node **a)
     t_stack_node *min;
 
     min = find_min(*a);
-    while ((*a)->nbr != min)
+    while ((*a)->nbr != min->nbr)
     {
+        refresh_index(*a);
         if ((*a)->above_median)
             ra(a, false);
         else
@@ -62,9 +63,9 @@ void    sort_stack(t_stack_node **a, t_stack_node **b)
 
     len = stack_lenght(*a);
     if (len-- > 3 && !stack_sorted(*a))
-        pa(a, b, false);
+        pb(a, b, false);
     if (len-- > 3 && !stack_sorted(*a))
-        pa(a, b, false);
+        pb(a, b, false);
     while (len-- > 3 && !stack_sorted(*a))
     {
         init_a(*a, *b);
@@ -78,5 +79,5 @@ void    sort_stack(t_stack_node **a, t_stack_node **b)
         pa(a, b, false);
     }
     refresh_index(*a);
-    verif_top_node(a);
+    verif_min_on_top(a);
 }

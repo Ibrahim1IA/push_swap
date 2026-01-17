@@ -19,11 +19,11 @@ void refresh_index(t_stack_node *stack)
     if (!stack)
         return ;
     i = 0;
-    median = stack_lenght(stack)/2;
+    median = (stack_lenght(stack)) / 2;
     while (stack)
     {
         stack->index = i;
-        if (i <= median)
+        if (i < median)
             stack->above_median = true;
         else
             stack->above_median = false;
@@ -46,28 +46,29 @@ static t_stack_node    *get_target_node_a(int nbr, t_stack_node *b)
             closest_smaller = stack->nbr;
             target_node = stack;
         }
+        stack = stack->next;
     }
     if (closest_smaller == LONG_MIN)
             target_node = find_max(b);
     return target_node;
 }
 
-static int    get_push_cost(t_stack_node *a, t_stack_node *b)
+static int    get_push_cost(t_stack_node *a, t_stack_node *b, t_stack_node *node)
 {
     int index_a;
     int index_b;
     int len;
 
     len = stack_lenght(a);
-    if (a->above_median)
-        index_a = a->index;
+    if (node->above_median)
+        index_a = node->index;
     else
-        index_a = len - a->index;
+        index_a = len - node->index;
     len = stack_lenght(b);
-    if (a->target_node->above_median)
-        index_b = a->target_node->index;
+    if (node->target_node->above_median)
+        index_b = node->target_node->index;
     else
-        index_b = len - a->target_node->index;
+        index_b = len - node->target_node->index;
     return (index_a + index_b);
 }
 
@@ -92,13 +93,14 @@ void    set_cheapest(t_stack_node *stack)
 }
 void init_a(t_stack_node *a, t_stack_node *b)
 {
+    t_stack_node *node = a;
     refresh_index(a);
     refresh_index(b);
-    while (a)
+    while (node)
     {
-        a->target_node = get_target_node_a(a->nbr, b);
-        a->push_cost = get_push_cost(a, a->target_node);
-        a = a->next;
+        node->target_node = get_target_node_a(node->nbr, b);
+        node->push_cost = get_push_cost(a, b, node);
+        node = node->next;
     }
     set_cheapest(a);
 }
