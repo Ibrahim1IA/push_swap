@@ -57,11 +57,13 @@ static void    push_cheapest_to_b(t_stack_node **a, t_stack_node **b)
     pb(a, b, false);
 }
 
-void    sort_stack(t_stack_node **a, t_stack_node **b)
+void    sort_stack(t_stack_node **a, t_stack_node **b, int array[])
 {
     int len;
+    int mid_array;
 
     len = stack_lenght(*a);
+    mid_array = (len + 1)/2;
     if (len-- > 3 && !stack_sorted(*a))
         pb(a, b, false);
     if (len-- > 3 && !stack_sorted(*a))
@@ -70,6 +72,8 @@ void    sort_stack(t_stack_node **a, t_stack_node **b)
     {
         init_a(*a, *b);
         push_cheapest_to_b(a, b);
+        if (find_index_in_array((*b)->nbr, array) <= mid_array)
+            rb(b, false);
     }
     three_sort(a);
     while (*b)

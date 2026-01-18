@@ -39,14 +39,16 @@ int main(int ac, char **av)
 {
     t_stack_node *a = NULL;
     t_stack_node *b = NULL;
+    int *array;
 
     if (ac < 2)
         return (0);
 
     init_stack_a(&a, av + 1);
-    sort_stack(&a, &b);
-    aff(a, b);
+    array = get_sorted_stack_in_array(a);
+    sort_stack(&a, &b, array);
+    //aff(a, b);
+    free(array);
     free_stack(&a);
-
     return (0);
 }
