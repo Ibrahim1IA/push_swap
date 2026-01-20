@@ -12,15 +12,36 @@
 
 #include "push_swap.h"
 
-void    three_sort(t_stack_node **a)
+void	bring_on_top(t_stack_node **stack, t_stack_node *top, bool i)
 {
-    t_stack_node    *biggest_node;
+	while (*stack != top)
+	{
+		if (i)
+		{
+			if (top->above_median)
+				ra(stack, false);
+			else
+				rra(stack, false);
+		}
+		else
+		{
+			if (top->above_median)
+				rb(stack, false);
+			else
+				rrb(stack, false);
+		}
+	}
+}
 
-    biggest_node = find_max(*a);
-    if (biggest_node == *a)
-        ra(a, false);
-    else if (biggest_node == (*a)->next)
-        rra(a, false);
-    if ((*a)->nbr > (*a)->next->nbr)
-        sa(a, false);
+void	three_sort(t_stack_node **a)
+{
+	t_stack_node	*biggest_node;
+
+	biggest_node = find_max(*a);
+	if (biggest_node == *a)
+		ra(a, false);
+	else if (biggest_node == (*a)->next)
+		rra(a, false);
+	if ((*a)->nbr > (*a)->next->nbr)
+		sa(a, false);
 }

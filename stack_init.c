@@ -11,42 +11,44 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-static int find_position(int n, int array[])
-{
-    int i;
 
-    i = 0;
-    while (array[i])
-    {
-        if (array[i] == n)
-            return (i);
-        i++;
-    }
-    return (-1);
+static int	find_position(int n, int array[])
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		if (array[i] == n)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
-static void append_node(t_stack_node **s, int n)
-{
-    t_stack_node    *node;
-    t_stack_node    *last_node;
 
-    if(!s)
-        return ;
-    node = malloc(sizeof(t_stack_node));
-    if (!node)
-        return ;
-    node->next = NULL;
-    node->nbr = n;
-    if (!*s)
-    {
-        *s = node;
-        node->prev = NULL;
-    }
-    else
-    {
-        last_node = find_last(*s);
-        last_node->next = node;
-        node->prev = last_node;
-    }
+static void	append_node(t_stack_node **s, int n)
+{
+	t_stack_node	*node;
+	t_stack_node	*last_node;
+
+	if (!s)
+		return ;
+	node = malloc(sizeof(t_stack_node));
+	if (!node)
+		return ;
+	node->next = NULL;
+	node->nbr = n;
+	if (!*s)
+	{
+		*s = node;
+		node->prev = NULL;
+	}
+	else
+	{
+		last_node = find_last(*s);
+		last_node->next = node;
+		node->prev = last_node;
+	}
 }
 
 static int	ft_atol(const char *nptr)
@@ -69,80 +71,42 @@ static int	ft_atol(const char *nptr)
 	}
 	return ((int)(nbr * s));
 }
-t_stack_node    *get_cheapest(t_stack_node *stack)
-{
-    if (!stack)
-        return (NULL);
-    while(stack)
-    {
-        if (stack->cheapest)
-            return (stack);
-        stack = stack->next;
-    }
-    return (NULL);
-}
-/* void    init_stack_a(t_stack_node **a, char **av)
-{
-    int nbr;
-    int i;
 
-    i = 0;
-    while (av[i])
-    {
-        if (syntax_error(a))
-        free_errors(a);
-        nbr = ft_atol(av[i]);
-        if (nbr > INT_MAX || nbr <INT_MIN)
-            free_errors(a);
-        if (duplicate_error(a))
-            free_errors(a);
-        append_node(a, (int)nbr);
-        i++;  
-    }
-} */
-void    init_stack_a(t_stack_node **a, char **av)
+t_stack_node	*get_cheapest(t_stack_node *stack)
 {
-    t_stack_node *tmp;
-    int nbr;
-    int *array;
-    int i;
-
-    i = 0;
-    while (av[i])
-    {
-        nbr = ft_atol(av[i]);
-        append_node(a, (int)nbr);
-        i++;  
-    }
-    tmp = *a;
-    array = get_sorted_stack_in_array(*a);
-    if (!array)
-        return;
-    while (tmp)
-    {
-        tmp->index[0] =  find_position(tmp->nbr, array);
-        tmp = tmp->next;
-    }
-    free(array);
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
 
-void    bring_on_top(t_stack_node **stack, t_stack_node *top, bool i)
+void	init_stack_a(t_stack_node **a, char **av)
 {
-    while (*stack != top)
-    {
-        if (i)
-        {
-            if(top->above_median)
-                ra(stack,false);
-            else
-                rra(stack, false);
-        }
-        else
-        {
-            if(top->above_median)
-                rb(stack, false);
-            else
-                rrb(stack, false);
-        }
-    }
+	t_stack_node	*tmp;
+	int				nbr;
+	int				*array;
+	int				i;
+
+	i = 0;
+	while (av[i])
+	{
+		nbr = ft_atol(av[i]);
+		append_node(a, (int)nbr);
+		i++;
+	}
+	tmp = *a;
+	array = get_sorted_stack_in_array(*a);
+	if (!array)
+		return ;
+	while (tmp)
+	{
+		tmp->index[0] = find_position(tmp->nbr, array);
+		tmp = tmp->next;
+	}
+	free(array);
 }

@@ -11,96 +11,101 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void refresh_index(t_stack_node *stack)
-{
-    int i;
-    int median;
 
-    if (!stack)
-        return ;
-    i = 0;
-    median = (stack_lenght(stack)) / 2;
-    while (stack)
-    {
-        stack->index[1] = i;
-        if (i < median)
-            stack->above_median = true;
-        else
-            stack->above_median = false;
-        stack = stack->next;
-        i++;
-    }
-}
-static t_stack_node    *get_target_node_a(int nbr, t_stack_node *a)
+void	refresh_index(t_stack_node *stack)
 {
-    t_stack_node *stack;
-    t_stack_node *target_node;
-    long closest_bigger;
+	int	i;
+	int	median;
 
-    closest_bigger = LONG_MAX;
-    stack = a;
-    while (stack)
-    {
-        if (stack->nbr > nbr && stack->nbr < closest_bigger)
-        {
-            closest_bigger = stack->nbr;
-            target_node = stack;
-        }
-        stack = stack->next;
-    }
-    if (closest_bigger == LONG_MAX)
-            target_node = find_min(a);
-    return target_node;
+	if (!stack)
+		return ;
+	i = 0;
+	median = (stack_lenght(stack)) / 2;
+	while (stack)
+	{
+		stack->index[1] = i;
+		if (i < median)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		i++;
+	}
 }
 
-static int    get_push_cost(t_stack_node *a, t_stack_node *b, t_stack_node *node)
+static t_stack_node	*get_target_node_a(int nbr, t_stack_node *a)
 {
-    int index_a;
-    int index_b;
-    int len;
+	t_stack_node	*stack;
+	t_stack_node	*target_node;
+	long			closest_bigger;
 
-    len = stack_lenght(a);
-    if (node->above_median)
-        index_a = node->index[1];
-    else
-        index_a = len - node->index[1];
-    len = stack_lenght(b);
-    if (node->target_node->above_median)
-        index_b = node->target_node->index[1];
-    else
-        index_b = len - node->target_node->index[1];
-    return (index_a + index_b);
+	closest_bigger = LONG_MAX;
+	stack = a;
+	while (stack)
+	{
+		if (stack->nbr > nbr && stack->nbr < closest_bigger)
+		{
+			closest_bigger = stack->nbr;
+			target_node = stack;
+		}
+		stack = stack->next;
+	}
+	if (closest_bigger == LONG_MAX)
+		target_node = find_min(a);
+	return (target_node);
 }
 
-void    set_cheapest(t_stack_node *stack)
-{   
-    long    cheapest_push_cost;
-    t_stack_node *cheapest_push_node;
-
-    if(!stack)
-        return ;
-    cheapest_push_cost = LONG_MAX;
-    while (stack)
-    {
-        if (stack->push_cost < cheapest_push_cost)
-        {
-            cheapest_push_cost = stack->push_cost;
-            cheapest_push_node = stack;
-        }
-        stack = stack->next;
-    }
-    cheapest_push_node->cheapest = true;
-}
-void init_a(t_stack_node *a, t_stack_node *b)
+static int	get_push_cost(t_stack_node *a, t_stack_node *b, t_stack_node *node)
 {
-    t_stack_node *node = a;
-    refresh_index(a);
-    refresh_index(b);
-    while (node)
-    {
-        node->target_node = get_target_node_a(node->nbr, b);
-        node->push_cost = get_push_cost(a, b, node);
-        node = node->next;
-    }
-    set_cheapest(a);
+	int	index_a;
+	int	index_b;
+	int	len;
+
+	len = stack_lenght(a);
+	if (node->above_median)
+		index_a = node->index[1];
+	else
+		index_a = len - node->index[1];
+	len = stack_lenght(b);
+	if (node->target_node->above_median)
+		index_b = node->target_node->index[1];
+	else
+		index_b = len - node->target_node->index[1];
+	return (index_a + index_b);
+}
+
+void	set_cheapest(t_stack_node *stack)
+{
+	long			cheapest_push_cost;
+	t_stack_node	*cheapest_push_node;
+
+	if (!stack)
+		return ;
+	cheapest_push_cost = LONG_MAX;
+	while (stack)
+	{
+		if (stack->push_cost < cheapest_push_cost)
+		{
+			cheapest_push_cost = stack->push_cost;
+			cheapest_push_node = stack;
+		}
+		stack = stack->next;
+	}
+	cheapest_push_node->cheapest = true;
+}
+
+void	init_a(t_stack_node *a, t_stack_node *b)
+{
+	t_stack_node	*node;
+
+	refresh_index(a);
+	refresh_index(b);
+	node = a;
+	while (node)
+	{
+		node->target_node = get_target_node_a(node->nbr, b);
+		node->push_cost = get_push_cost(a, b, node);
+		node = node->next;
+	}
+	set_cheapest(a);
 }
