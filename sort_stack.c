@@ -65,6 +65,8 @@ void	sort_stack(t_stack_node **a, t_stack_node **b)
 	int	len;
 
 	len = stack_lenght(*a);
+	pb(a, b, 0);
+	--len;
 	while (len > 3 && !stack_sorted(*a))
 	{
 		pb(a, b, 0);

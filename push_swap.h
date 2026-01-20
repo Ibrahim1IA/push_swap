@@ -13,7 +13,8 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "./libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
 
@@ -60,5 +61,6 @@ void					init_a(t_stack_node *a, t_stack_node *b);
 
 int						*get_sorted_stack_in_array(t_stack_node *a);
 int						find_index_in_array(int nbr, int array[]);
+char					**ft_split(char const *s, char c);
 
 #endif
