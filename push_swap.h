@@ -19,7 +19,7 @@
 typedef struct s_stack_node
 {
 	int	nbr;
-	int index;
+	int index[2];
 	int push_cost;
 	bool above_median;
 	bool cheapest;
@@ -41,7 +41,7 @@ void    rr(t_stack_node **a, t_stack_node **b, bool print);
 void    rrr(t_stack_node **a, t_stack_node **b, bool print);
 
 void    three_sort(t_stack_node **a);
-void    sort_stack(t_stack_node **a, t_stack_node **b, int array[]);
+void    sort_stack(t_stack_node **a, t_stack_node **b);
 
 int	stack_lenght(t_stack_node *s);
 bool	stack_sorted(t_stack_node *s);
@@ -58,6 +58,6 @@ void	init_a(t_stack_node *a, t_stack_node *b);
 void    init_b(t_stack_node *a, t_stack_node *b);
 
 int	*get_sorted_stack_in_array(t_stack_node *a);
-int find_index_in_array(int nbr, int *array);
+int find_index_in_array(int nbr, int array[]);
 
 #endif

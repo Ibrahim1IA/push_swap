@@ -15,17 +15,16 @@
 
 static void    verif_min_on_top(t_stack_node **a)
 {
-    t_stack_node *min;
-
-    min = find_min(*a);
-    while ((*a)->nbr != min->nbr)
+    int len;
+    len = stack_lenght(*a) / 2;
+    while ((*a)->index[0] != 0)
     {
-        refresh_index(*a);
-        if ((*a)->above_median)
+        if ((*a)->index[0] > len)
             ra(a, false);
         else
             rra(a, false);
     }
+    refresh_index(*a);
 }
 static void    rotate_all(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest)
 {
@@ -43,7 +42,7 @@ static void    reverse_rotate_all(t_stack_node **a, t_stack_node **b, t_stack_no
     refresh_index(*b);
 }
 
-static void    push_cheapest_to_b(t_stack_node **a, t_stack_node **b)
+static void    push_cheapest_to_a(t_stack_node **a, t_stack_node **b)
 {
     t_stack_node *cheapest;
 
@@ -54,34 +53,27 @@ static void    push_cheapest_to_b(t_stack_node **a, t_stack_node **b)
         reverse_rotate_all(a, b, cheapest);
     bring_on_top(a, cheapest, false);
     bring_on_top(b, cheapest->target_node, true);
-    pb(a, b, false);
+    pa(b, a, false);
 }
 
-void    sort_stack(t_stack_node **a, t_stack_node **b, int array[])
+void    sort_stack(t_stack_node **a, t_stack_node **b)
 {
     int len;
-    int mid_array;
-
     len = stack_lenght(*a);
-    mid_array = (len + 1)/2;
-    if (len-- > 3 && !stack_sorted(*a))
-        pb(a, b, false);
-    if (len-- > 3 && !stack_sorted(*a))
-        pb(a, b, false);
-    while (len-- > 3 && !stack_sorted(*a))
+    
+    while (len > 3 && !stack_sorted(*a))
     {
-        init_a(*a, *b);
-        push_cheapest_to_b(a, b);
-        if (find_index_in_array((*b)->nbr, array) <= mid_array)
-            rb(b, false);
+        pb(a, b, 0);
+        if ((*b)->index[0] < len /2)
+            rb(b, 0);
+        len--;
     }
-    three_sort(a);
+    if (len == 3)
+        three_sort(a);
     while (*b)
     {
-        init_b(*a, *b);
-        bring_on_top(a, (*b)->target_node, false);
-        pa(a, b, false);
+        init_a(*b, *a);
+        push_cheapest_to_a(b, a);
     }
-    refresh_index(*a);
     verif_min_on_top(a);
 }

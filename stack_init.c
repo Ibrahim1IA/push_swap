@@ -11,7 +11,19 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+static int find_position(int n, int array[])
+{
+    int i;
 
+    i = 0;
+    while (array[i])
+    {
+        if (array[i] == n)
+            return (i);
+        i++;
+    }
+    return (-1);
+}
 static void append_node(t_stack_node **s, int n)
 {
     t_stack_node    *node;
@@ -90,7 +102,9 @@ t_stack_node    *get_cheapest(t_stack_node *stack)
 } */
 void    init_stack_a(t_stack_node **a, char **av)
 {
+    t_stack_node *tmp;
     int nbr;
+    int *array;
     int i;
 
     i = 0;
@@ -100,13 +114,23 @@ void    init_stack_a(t_stack_node **a, char **av)
         append_node(a, (int)nbr);
         i++;  
     }
+    tmp = *a;
+    array = get_sorted_stack_in_array(*a);
+    if (!array)
+        return;
+    while (tmp)
+    {
+        tmp->index[0] =  find_position(tmp->nbr, array);
+        tmp = tmp->next;
+    }
+    free(array);
 }
 
 void    bring_on_top(t_stack_node **stack, t_stack_node *top, bool i)
 {
     while (*stack != top)
     {
-        if (!i)
+        if (i)
         {
             if(top->above_median)
                 ra(stack,false);
