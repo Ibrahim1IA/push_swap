@@ -6,32 +6,11 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 00:24:18 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/15 01:19:29 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:46:42 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	bring_on_top(t_stack_node **stack, t_stack_node *top, bool i)
-{
-	while (*stack != top)
-	{
-		if (i)
-		{
-			if (top->above_median)
-				ra(stack, false);
-			else
-				rra(stack, false);
-		}
-		else
-		{
-			if (top->above_median)
-				rb(stack, false);
-			else
-				rrb(stack, false);
-		}
-	}
-}
 
 void	three_sort(t_stack_node **a)
 {

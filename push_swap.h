@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 21:13:12 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/16 03:03:37 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:58:26 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void					rrr(t_stack_node **a, t_stack_node **b, bool print);
 
 void					three_sort(t_stack_node **a);
 void					sort_stack(t_stack_node **a, t_stack_node **b);
+int						error_syntax(char *str_n);
+int						error_duplicate(t_stack_node *a, int n);
+void					free_stack(t_stack_node **stack);
 
 int						stack_lenght(t_stack_node *s);
 bool					stack_sorted(t_stack_node *s);
@@ -62,5 +65,6 @@ void					init_a(t_stack_node *a, t_stack_node *b);
 int						*get_sorted_stack_in_array(t_stack_node *a);
 int						find_index_in_array(int nbr, int array[]);
 char					**ft_split(char const *s, char c);
+void					init_sort_index(t_stack_node *a);
 
 #endif

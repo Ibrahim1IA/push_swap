@@ -6,26 +6,19 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 22:43:58 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/15 01:48:04 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:59:24 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_position(int n, int array[])
+
+static void 	free_errors(t_stack_node **a)
 {
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		if (array[i] == n)
-			return (i);
-		i++;
-	}
-	return (-1);
+	free_stack(a);
+	write(2, "Error\n", 6);
+	exit(1);
 }
-
 static void	append_node(t_stack_node **s, int n)
 {
 	t_stack_node	*node;
@@ -51,7 +44,7 @@ static void	append_node(t_stack_node **s, int n)
 	}
 }
 
-static int	ft_atol(const char *nptr)
+static long	ft_atol(const char *nptr)
 {
 	long	nbr;
 	int		i;
@@ -69,7 +62,7 @@ static int	ft_atol(const char *nptr)
 	{
 		nbr = (nbr * 10) + (nptr[i++] - 48);
 	}
-	return ((int)(nbr * s));
+	return (nbr * s);
 }
 
 t_stack_node	*get_cheapest(t_stack_node *stack)
@@ -87,26 +80,21 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 
 void	init_stack_a(t_stack_node **a, char **av)
 {
-	t_stack_node	*tmp;
-	int				nbr;
-	int				*array;
+	long			nbr;
 	int				i;
 
 	i = 0;
 	while (av[i])
 	{
+		if (error_syntax(av[i]))
+			free_errors(a);
 		nbr = ft_atol(av[i]);
+		if (nbr > INT_MAX || nbr < INT_MIN)
+			free_errors(a);
+		if (error_duplicate(*a, (int)nbr))
+			free_errors(a); 
 		append_node(a, (int)nbr);
 		i++;
 	}
-	tmp = *a;
-	array = get_sorted_stack_in_array(*a);
-	if (!array)
-		return ;
-	while (tmp)
-	{
-		tmp->index[0] = find_position(tmp->nbr, array);
-		tmp = tmp->next;
-	}
-	free(array);
+	init_sort_index(*a);
 }
