@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	free_errors(t_stack_node **a)
+void	free_errors(t_stack_node **a)
 {
 	free_stack(a);
 	write(2, "Error\n", 6);
