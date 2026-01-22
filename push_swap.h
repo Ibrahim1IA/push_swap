@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
+# include "get_next_line/get_next_line.h"
 
 typedef struct s_stack_node
 {

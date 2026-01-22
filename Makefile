@@ -9,7 +9,8 @@ SRC = push_swap.c ft_split.c get_sorted_stack_in_array.c init_a.c push.c \
 
 BONUS_SRC = checker.c ft_split.c get_sorted_stack_in_array.c init_a.c push.c \
 			reverse_rotatate.c rotate.c sort_stack.c stack_init.c stack_init2.c \
-			stack_utils.c swap.c error_manager.c
+			stack_utils.c swap.c three_sort.c error_manager.c ./get_next_line/get_next_line.c \
+			./get_next_line/get_next_line_utils.c 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 OBJ = $(SRC:.c=.o)
@@ -23,7 +24,7 @@ bonus: $(BONUS_OBJ)
 	$(CC) $(CFLAGS) $(BONUS_OBJ) -o checker
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
 	rm -f $(NAME)

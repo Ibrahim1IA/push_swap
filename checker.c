@@ -1,29 +1,39 @@
 
 #include "push_swap.h"
 
+static int	ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
+}
+
 static int	execute_command(char *command, t_stack_node **a, t_stack_node **b)
 {
-	if (strcmp(command, "sa\n") == 0)
+	if (ft_strcmp(command, "sa\n") == 0)
 		sa(a, 1);
-	else if (strcmp(command, "sb\n") == 0)
+	else if (ft_strcmp(command, "sb\n") == 0)
 		sb(b, 1);
-	else if (strcmp(command, "ss\n") == 0)
+	else if (ft_strcmp(command, "ss\n") == 0)
 		ss(a, b, 1);
-	else if (strcmp(command, "pa\n") == 0)
+	else if (ft_strcmp(command, "pa\n") == 0)
 		pa(a, b, 1);
-	else if (strcmp(command, "pb\n") == 0)
+	else if (ft_strcmp(command, "pb\n") == 0)
 		pb(a, b, 1);
-	else if (strcmp(command, "ra\n") == 0)
+	else if (ft_strcmp(command, "ra\n") == 0)
 		ra(a, 1);
-	else if (strcmp(command, "rb\n") == 0)
+	else if (ft_strcmp(command, "rb\n") == 0)
 		rb(b, 1);
-	else if (strcmp(command, "rr\n") == 0)
+	else if (ft_strcmp(command, "rr\n") == 0)
 		rr(a, b, 1);
-	else if (strcmp(command, "rra\n") == 0)
+	else if (ft_strcmp(command, "rra\n") == 0)
 		rra(a, 1);
-	else if (strcmp(command, "rrb\n") == 0)
+	else if (ft_strcmp(command, "rrb\n") == 0)
 		rrb(b, 1);
-	else if (strcmp(command, "rrr\n") == 0)
+	else if (ft_strcmp(command, "rrr\n") == 0)
 		rrr(a, b, 1);
 	else
 		return (0);
