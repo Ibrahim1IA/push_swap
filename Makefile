@@ -1,0 +1,33 @@
+NAME = push_swap
+
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+
+SRC = push_swap.c ft_split.c get_sorted_stack_in_array.c init_a.c push.c \
+      reverse_rotatate.c rotate.c sort_stack.c stack_init.c stack_init2.c \
+      stack_utils.c swap.c three_sort.c error_manager.c
+
+BONUS_SRC = checker.c ft_split.c get_sorted_stack_in_array.c init_a.c push.c \
+			reverse_rotatate.c rotate.c sort_stack.c stack_init.c stack_init2.c \
+			stack_utils.c swap.c error_manager.c
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
+
+OBJ = $(SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+bonus: $(BONUS_OBJ)
+	$(CC) $(CFLAGS) $(BONUS_OBJ) -o checker
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re bonus

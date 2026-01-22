@@ -47,11 +47,11 @@ void	bring_on_top(t_stack_node **stack, t_stack_node *top, bool i)
 	}
 }
 
-void    init_sort_index(t_stack_node *a)
+void	init_sort_index(t_stack_node *a)
 {
-    int     *array;
+	int	*array;
 
-    array = get_sorted_stack_in_array(a);
+	array = get_sorted_stack_in_array(a);
 	if (!array)
 		return ;
 	while (a)
@@ -61,33 +61,11 @@ void    init_sort_index(t_stack_node *a)
 	}
 	free(array);
 }
-
-int	error_syntax(char *str_n)
+void	parste_and_init(char *str, t_stack_node **a)
 {
-	if (!(*str_n == '+'
-			|| *str_n == '-'
-			|| (*str_n >= '0' && *str_n <= '9'))) 
-		return (1);
-	if ((*str_n == '+'
-			|| *str_n == '-')
-		&& !(str_n[1] >= '0' && str_n[1] <= '9'))
-	while (*++str_n) 
-	{
-		if (!(*str_n >= '0' && *str_n <= '9')) 
-			return (1);
-	}
-	return (0);
-}
+	char	**args;
 
-int	error_duplicate(t_stack_node *a, int n)
-{
-	if (!a) 
-		return (0);
-	while (a) 
-	{
-		if (a->nbr == n) 
-			return (1);
-		a = a->next; 
-	}
-	return (0);
+	args = ft_split(str, ' ');
+	init_stack_a(a, args);
+	free_all(args);
 }

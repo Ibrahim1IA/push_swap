@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-
-static void 	free_errors(t_stack_node **a)
+static void	free_errors(t_stack_node **a)
 {
 	free_stack(a);
 	write(2, "Error\n", 6);
 	exit(1);
 }
+
 static void	append_node(t_stack_node **s, int n)
 {
 	t_stack_node	*node;
@@ -92,7 +92,7 @@ void	init_stack_a(t_stack_node **a, char **av)
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			free_errors(a);
 		if (error_duplicate(*a, (int)nbr))
-			free_errors(a); 
+			free_errors(a);
 		append_node(a, (int)nbr);
 		i++;
 	}
