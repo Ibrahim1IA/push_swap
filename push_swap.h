@@ -55,7 +55,7 @@ t_stack_node			*find_max(t_stack_node *s);
 t_stack_node			*find_last(t_stack_node *s);
 t_stack_node			*get_cheapest(t_stack_node *stack);
 
-void				parste_and_init(char *str, t_stack_node **a);
+void					parste_and_init(char *str, t_stack_node **a);
 void					init_stack_a(t_stack_node **a, char **av);
 void					bring_on_top(t_stack_node **stack, t_stack_node *top,
 							bool i);

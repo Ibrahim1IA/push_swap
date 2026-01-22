@@ -12,45 +12,6 @@
 
 #include "push_swap.h"
 
-static void	free_all(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
-void	free_stack(t_stack_node **stack)
-{
-	t_stack_node	*tmp;
-	t_stack_node	*current;
-
-	if (!stack || !*stack)
-		return ;
-	current = *stack;
-	while (current)
-	{
-		tmp = current->next;
-		free(current);
-		current = tmp;
-	}
-	*stack = NULL;
-}
-
-void	parste_and_init(char *str, t_stack_node **a)
-{
-	char	**args;
-
-	args = ft_split(str, ' ');
-	init_stack_a(a, args);
-	free_all(args);
-}
-
 int	main(int ac, char **av)
 {
 	t_stack_node	*a;

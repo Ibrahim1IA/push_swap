@@ -61,6 +61,20 @@ void	init_sort_index(t_stack_node *a)
 	}
 	free(array);
 }
+
+static void	free_all(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
 void	parste_and_init(char *str, t_stack_node **a)
 {
 	char	**args;

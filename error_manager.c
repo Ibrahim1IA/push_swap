@@ -28,6 +28,7 @@ int	error_duplicate(t_stack_node *a, int n)
 	}
 	return (0);
 }
+
 void	free_stack(t_stack_node **stack)
 {
 	t_stack_node	*tmp;
