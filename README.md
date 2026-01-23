@@ -39,7 +39,7 @@ For the bonus checker:
 make bonus
 ```
 
-(Note: The checker implementation may need to be completed first.)
+This will create the `checker` executable.
 
 ### Execution
 
@@ -81,10 +81,6 @@ make re
 
 ## Resources
 
-- [Push_swap project subject](https://cdn.intra.42.fr/pdf/pdf/55161/en.subject.pdf) - Official 42 project description
-- [Stack data structure](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) - Wikipedia article on stacks
-- [Sorting algorithms](https://en.wikipedia.org/wiki/Sorting_algorithm) - Overview of sorting algorithms
-- [Radix sort](https://en.wikipedia.org/wiki/Radix_sort) - Efficient sorting algorithm often used in push_swap
-- [42 School common circle](https://github.com/42School/common-core) - Resources for 42 projects
-
-AI was used to generate this README.md file, including the structure, content organization, and Markdown formatting. No AI was used in the implementation of the push_swap algorithm or code.
+- [Push_swap project explanation](https://youtu.be/wRvipSG4Mmk?si=iS4BkF850GzdPS-O) - by Thuggonaut 
+- [Sorting Algorithm and project concept explanation](https://42-cursus.gitbook.io/guide/2-rank-02/push_swap) - gitbook
+- [Sorting algorithms](https://medium.com/@ayogun/push-swap-c1f5d2d41e97) - Overview of sorting algorithms
