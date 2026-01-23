@@ -82,5 +82,5 @@ make re
 ## Resources
 
 - [Push_swap project explanation](https://youtu.be/wRvipSG4Mmk?si=iS4BkF850GzdPS-O) - by Thuggonaut 
-- [Sorting Algorithm and project concept explanation](https://42-cursus.gitbook.io/guide/2-rank-02/push_swap) - gitbook
-- [Sorting algorithms](https://medium.com/@ayogun/push-swap-c1f5d2d41e97) - Overview of sorting algorithms
+- [Sorting Algorithms and project concept explanation](https://42-cursus.gitbook.io/guide/2-rank-02/push_swap) - gitbook
+- [Sorting algorithms Used](https://medium.com/@ayogun/push-swap-c1f5d2d41e97) - Overview of sorting algorithms

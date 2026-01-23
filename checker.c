@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 21:50:19 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/22 23:22:08 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:21:32 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	performe_sorting(t_stack_node **a, t_stack_node **b)
 	{
 		command = get_next_line(0);
 		if (!command)
-			break;
+			break ;
 		len = ft_strlen(command);
 		if (len > 0 && command[len - 1] == '\n')
 			command[len - 1] = '\0';
@@ -89,14 +89,11 @@ int	main(int ac, char **av)
 		parste_and_init(av[1], &a);
 	else
 		init_stack_a(&a, av + 1);
-	
 	performe_sorting(&a, &b);
-	
 	if (stack_sorted(a) && !b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

@@ -20,6 +20,9 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
+%.o : %.c push_swap.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 bonus: $(BONUS_OBJ)
 	$(CC) $(CFLAGS) $(BONUS_OBJ) -o checker
 
