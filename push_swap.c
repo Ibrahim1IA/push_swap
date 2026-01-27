@@ -19,12 +19,12 @@ int	main(int ac, char **av)
 
 	a = NULL;
 	b = NULL;
-	if (ac == 1 || (ac == 2 && !av[1][0]))
+	if (ac == 1)
 		return (0);
-	else if (ac == 2)
-		parste_and_init(av[1], &a);
-	else
-		init_stack_a(&a, av + 1);
+	if (verify_args(ac, av))
+		free_errors(&a);
+
+	merge_and_init(&a, av + 1);
 	if (!stack_sorted(a))
 	{
 		if (stack_lenght(a) == 2)

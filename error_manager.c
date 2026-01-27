@@ -14,16 +14,20 @@
 
 int	error_syntax(char *str_n)
 {
-	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
+	int i;
+
+	if (!str_n || !str_n[0])
 		return (1);
-	if ((*str_n == '+' || *str_n == '-') && !(str_n[1] >= '0'
-			&& str_n[1] <= '9'))
+	i = 0;
+	if (str_n[0] == '+' || str_n[0] == '-')
+		i = 1;
+	if (str_n[i] == '\0')
+		return (1);
+	while (str_n[i])
 	{
-		while (*++str_n)
-		{
-			if (!(*str_n >= '0' && *str_n <= '9'))
-				return (1);
-		}
+		if (str_n[i] < '0' || str_n[i] > '9')
+			return (1);
+		i++;
 	}
 	return (0);
 }
