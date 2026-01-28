@@ -78,73 +78,16 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 	return (NULL);
 }
 
-static int	check_arg(char *arg)
-{
-	char **parts;
-	int j;
-
-	parts = ft_split(arg, ' ');
-	if (!parts)
-		return (1);
-	if (!parts[0])
-	{
-		free(parts);
-		return (1);
-	}
-	j = 0;
-	while (parts[j])
-	{
-		if (error_syntax(parts[j]))
-		{
-			while (parts[j])
-				free(parts[j++]);
-			free(parts);
-			return (1);
-		}
-		free(parts[j++]);
-	}
-	free(parts);
-	return (0);
-}
-
-int	verify_args(int ac, char **av)
-{
-	int i;
-
-	if (ac <= 1)
-		return (0);
-	i = 1;
-	while (av[i])
-		if (check_arg(av[i++]))
-			return (1);
-	return (0);
-}
-
-void	merge_and_init(t_stack_node **a, char **av)
-{
-	char **merged;
-	int i;
-
-	merged = merge_args(av);
-	if (!merged || !merged[0])
-		free_errors(a);
-	init_stack_a(a, merged);
-	i = 0;
-	while (merged && merged[i])
-		free(merged[i++]);
-	free(merged);
-}
-
 void	init_stack_a(t_stack_node **a, char **av)
 {
-	if (!av || !av[0])
-		free_errors(a);
 	long			nbr;
 	int				i;
 
 	i = 0;
 	while (av[i])
 	{
+		if (error_syntax(av[i]))
+			free_errors(a);
 		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			free_errors(a);

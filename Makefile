@@ -1,11 +1,11 @@
 NAME = push_swap
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall 
 
 SRC = push_swap.c ft_split.c get_sorted_stack_in_array.c init_a.c push.c \
       reverse_rotatate.c rotate.c sort_stack.c stack_init.c stack_init2.c \
-      stack_utils.c swap.c three_sort.c error_manager.c stack_init_utils.c
+      stack_utils.c swap.c three_sort.c error_manager.c args_verif.c stack_init_utils.c
 
 BONUS_SRC = checker.c ft_split.c get_sorted_stack_in_array.c init_a.c push.c \
 			reverse_rotatate.c rotate.c sort_stack.c stack_init.c stack_init2.c \

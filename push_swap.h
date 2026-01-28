@@ -42,17 +42,17 @@ void					pb(t_stack_node **a, t_stack_node **b, bool print);
 void					rr(t_stack_node **a, t_stack_node **b, bool print);
 void					rrr(t_stack_node **a, t_stack_node **b, bool print);
 
-char					*ft_strjoin(char const *s1, char const *s2);
-char					*ft_strdup(const char *s);
-void					merge_and_init(t_stack_node **a, char **av);
-char					**merge_args(char **av);
-int						verify_args(int ac, char **av);
 void					three_sort(t_stack_node **a);
 void					sort_stack(t_stack_node **a, t_stack_node **b);
 int						error_syntax(char *str_n);
 int						error_duplicate(t_stack_node *a, int n);
+int						verify_args(char **args, char **av);
 void					free_stack(t_stack_node **stack);
 void					free_errors(t_stack_node **a);
+char					*ft_strjoin(char const *s1, char const *s2);
+char					*ft_strdup(const char *s);
+size_t					ft_strlen(const char *s);
+size_t					ft_strlcpy(char *dst, const char *src, size_t size);
 
 int						stack_lenght(t_stack_node *s);
 bool					stack_sorted(t_stack_node *s);
