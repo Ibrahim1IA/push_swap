@@ -12,9 +12,10 @@
 
 #include "push_swap.h"
 
-void	free_errors(t_stack_node **a)
+void	free_errors(t_stack_node **a, char **av)
 {
 	free_stack(a);
+	free_split_args(av);
 	write(2, "Error\n", 6);
 	exit(1);
 }
@@ -87,12 +88,12 @@ void	init_stack_a(t_stack_node **a, char **av)
 	while (av[i])
 	{
 		if (error_syntax(av[i]))
-			free_errors(a);
+			free_errors(a, av);
 		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			free_errors(a);
+			free_errors(a, av);
 		if (error_duplicate(*a, (int)nbr))
-			free_errors(a);
+			free_errors(a, av);
 		append_node(a, (int)nbr);
 		i++;
 	}
