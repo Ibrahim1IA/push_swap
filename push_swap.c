@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include <stdio.h>
+
 static void	free_errors_args(char **str)
 {
 	if (str)
@@ -19,24 +20,16 @@ static void	free_errors_args(char **str)
 	write(2, "Error\n", 6);
 	exit(1);
 }
-void print_stack(t_stack_node *a)
-{
-	printf(" ");
-	while (a)
-	{
-		printf("%d ", a->nbr);
-		a = a->next;
-	}
-}
+
 int	main(int ac, char **av)
 {
-	t_stack_node *a;
-    t_stack_node *b;
-    char *args;
+	t_stack_node	*a;
+	t_stack_node	*b;
+	char			*args;
 
-    a = NULL;
-    b = NULL;
-    args = NULL;
+	a = NULL;
+	b = NULL;
+	args = NULL;
 	if (ac == 1)
 		return (0);
 	if (verify_args(&args, av + 1))

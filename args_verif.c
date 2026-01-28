@@ -3,8 +3,8 @@
 
 static int	check_arg(char *arg)
 {
-	char **parts;
-	int j;
+	char	**parts;
+	int		j;
 
 	parts = ft_split(arg, ' ');
 	if (!parts)
@@ -52,7 +52,7 @@ static void	copy_args(char **args, char **av, size_t total_len)
 	(*args)[pos - 1] = '\0';
 }
 
-int verify_args(char **args, char **av)
+int	verify_args(char **args, char **av)
 {
 	int		i;
 	size_t	total_len;

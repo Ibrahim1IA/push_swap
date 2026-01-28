@@ -50,7 +50,7 @@ void	bring_on_top(t_stack_node **stack, t_stack_node *top, bool i)
 void	init_sort_index(t_stack_node *a)
 {
 	int	*array;
-	int len;
+	int	len;
 
 	len = stack_lenght(a);
 	array = get_sorted_stack_in_array(a);

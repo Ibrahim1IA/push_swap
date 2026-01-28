@@ -14,7 +14,7 @@
 
 int	error_syntax(char *str_n)
 {
-	int i;
+	int	i;
 
 	if (!str_n || !str_n[0])
 		return (1);

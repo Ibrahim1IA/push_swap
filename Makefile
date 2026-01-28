@@ -1,7 +1,7 @@
 NAME = push_swap
 
 CC = gcc
-CFLAGS = -Wall 
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = push_swap.c ft_split.c get_sorted_stack_in_array.c init_a.c push.c \
       reverse_rotatate.c rotate.c sort_stack.c stack_init.c stack_init2.c \

@@ -64,32 +64,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcpy((str + s1_len), s2, s2_len + 1);
 	return (str);
 }
-
-char	**merge_args(char **av)
-{
-	char    *combined;
-	char    *tmp;
-	char    **res;
-	int     i;
-
-	if (!av || !av[0])
-	{
-		res = malloc(sizeof(char *) * 1);
-		if (!res)
-			return (NULL);
-		res[0] = NULL;
-		return (res);
-	}
-	combined = ft_strdup(av[0]);
-	i = 1;
-	while (av[i])
-	{
-		tmp = ft_strjoin(combined, " ");
-		free(combined);
-		combined = ft_strjoin(tmp, av[i++]);
-		free(tmp);
-	}
-	res = ft_split(combined, ' ');
-	free(combined);
-	return (res);
-}
