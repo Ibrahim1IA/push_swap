@@ -6,12 +6,11 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 22:24:09 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/29 02:29:48 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/29 04:44:48 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	free_errors_args(char **str)
 {

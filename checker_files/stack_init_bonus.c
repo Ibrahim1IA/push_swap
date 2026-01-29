@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   stack_init_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/01 22:43:58 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/21 17:59:24 by iissoufo         ###   ########.fr       */
+/*   Created: 2026/01/29 04:43:30 by iissoufo          #+#    #+#             */
+/*   Updated: 2026/01/29 04:43:30 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	append_node(t_stack_node **s, int n)
 
 static long	ft_atol(const char *nptr)
 {
-	long	nbr;
+	long long	nbr;
 	int		i;
 	int		s;
 
