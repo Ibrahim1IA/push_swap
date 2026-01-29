@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 size_t	ft_strlen(const char *s)
@@ -32,7 +31,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	len = ft_strlen(src);
 	if (size == 0)
 		return (len);
-	while (src[i] && i < size -1)
+	while (src[i] && i < size - 1)
 	{
 		dst[i] = src[i];
 		i++;

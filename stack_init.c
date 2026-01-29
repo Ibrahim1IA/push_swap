@@ -46,9 +46,9 @@ static void	append_node(t_stack_node **s, int n)
 
 static long	ft_atol(const char *nptr)
 {
-	long long 	nbr;
-	int		i;
-	int		s;
+	long long	nbr;
+	int			i;
+	int			s;
 
 	i = 0;
 	s = 1;
@@ -80,8 +80,8 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 
 int	init_stack_a(t_stack_node **a, char **av)
 {
-	long 		nbr;
-	int				i;
+	long	nbr;
+	int		i;
 
 	i = 0;
 	while (av[i])

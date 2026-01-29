@@ -13,10 +13,10 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdlib.h>
-# include <unistd.h>
 # include <limits.h>
 # include <stdbool.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_stack_node
 {
@@ -48,7 +48,7 @@ int						error_syntax(char *str_n);
 int						error_duplicate(t_stack_node *a, int n);
 int						verify_args(char **args, char **av);
 void					free_stack(t_stack_node **stack);
-int					free_errors(t_stack_node **a, char **args);
+int						free_errors(t_stack_node **a, char **args);
 void					free_split_args(char **arr);
 char					*ft_strjoin(char const *s1, char const *s2);
 char					*ft_strdup(const char *s);

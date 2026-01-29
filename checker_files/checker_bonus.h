@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
-#include "get_next_line/get_next_line.h"
-# include <stdbool.h>
-#include <unistd.h>
-# include <stdlib.h>
+# include "get_next_line/get_next_line.h"
 # include <limits.h>
+# include <stdbool.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_stack_node
 {
@@ -33,10 +33,9 @@ typedef struct s_stack_node
 
 typedef struct s_checker
 {
-	char		*command;
+	char				*command;
 	struct s_checker	*next;
-}	t_checker;
-
+}						t_checker;
 
 void					ra(t_stack_node **a, bool print);
 void					rb(t_stack_node **b, bool print);
@@ -51,18 +50,19 @@ void					rr(t_stack_node **a, t_stack_node **b, bool print);
 void					rrr(t_stack_node **a, t_stack_node **b, bool print);
 
 void					free_checker(t_checker *commands);
-void					performe_sorting(t_stack_node **a, t_stack_node **b, t_checker *commands);
+void					performe_sorting(t_stack_node **a, t_stack_node **b,
+							t_checker *commands);
 void					save_command(t_checker **head);
 
-int					parste_and_init(char *str, t_stack_node **a);
+int						parste_and_init(char *str, t_stack_node **a);
 int						verify_args(char **args, char **av);
 int						error_syntax(char *str_n);
 int						error_duplicate(t_stack_node *a, int n);
 int						verify_args(char **args, char **av);
 void					free_stack(t_stack_node **stack);
-int					free_errors(t_stack_node **a, char **av);
+int						free_errors(t_stack_node **a, char **av);
 void					free_split_args(char **arr);
-int					init_stack_a(t_stack_node **a, char **av);
+int						init_stack_a(t_stack_node **a, char **av);
 bool					stack_sorted(t_stack_node *s);
 char					**ft_split(char const *s, char c);
 void					init_sort_index(t_stack_node *a);
@@ -76,4 +76,4 @@ int						stack_lenght(t_stack_node *s);
 bool					stack_sorted(t_stack_node *s);
 char					**ft_split(char const *s, char c);
 
-# endif
+#endif

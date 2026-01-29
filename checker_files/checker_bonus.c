@@ -25,6 +25,12 @@ void	free_checker(t_checker *commands)
 	}
 }
 
+static void	free_all_stack(t_stack_node **a, t_stack_node **b)
+{
+	free_stack(a);
+	free_stack(b);
+}
+
 static void	free_errors_args(char **str)
 {
 	if (str)
@@ -57,8 +63,7 @@ int	main(int ac, char **av)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_stack(&a);
-	free_stack(&b);
+	free_all_stack(&a, &b);
 	free_checker(commands);
 	return (0);
 }

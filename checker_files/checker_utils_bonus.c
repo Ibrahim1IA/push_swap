@@ -51,7 +51,8 @@ static int	execute_command(char *command, t_stack_node **a, t_stack_node **b)
 	return (1);
 }
 
-void	performe_sorting(t_stack_node **a, t_stack_node **b, t_checker *commands)
+void	performe_sorting(t_stack_node **a, t_stack_node **b,
+		t_checker *commands)
 {
 	t_checker	*current;
 
@@ -70,7 +71,7 @@ void	performe_sorting(t_stack_node **a, t_stack_node **b, t_checker *commands)
 	}
 }
 
-static void append_node(t_checker **head, t_checker *new_node)
+static void	append_node(t_checker **head, t_checker *new_node)
 {
 	t_checker	*temp;
 
@@ -80,11 +81,11 @@ static void append_node(t_checker **head, t_checker *new_node)
 	temp->next = new_node;
 }
 
-void save_command(t_checker **head)
+void	save_command(t_checker **head)
 {
-	char	*command;
-	int		len;
 	t_checker	*new_node;
+	char		*command;
+	int			len;
 
 	while (1)
 	{
@@ -96,7 +97,7 @@ void save_command(t_checker **head)
 			command[len - 1] = '\0';
 		new_node = (t_checker *)malloc(sizeof(t_checker));
 		if (!new_node)
-			return;
+			return ;
 		new_node->command = ft_strdup(command);
 		new_node->next = NULL;
 		if (*head == NULL)

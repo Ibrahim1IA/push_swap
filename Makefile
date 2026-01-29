@@ -25,6 +25,9 @@ $(NAME): $(OBJ)
 %.o : %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
+./checker_files/%.o : ./checker_files/%.c checker_files/checker_bonus.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 bonus: $(BONUS_OBJ)
 	$(CC) $(CFLAGS) $(BONUS_OBJ) -o $(BONUS_NAME)
 
