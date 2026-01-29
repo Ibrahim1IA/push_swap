@@ -48,7 +48,7 @@ int						error_syntax(char *str_n);
 int						error_duplicate(t_stack_node *a, int n);
 int						verify_args(char **args, char **av);
 void					free_stack(t_stack_node **stack);
-void					free_errors(t_stack_node **a, char **av);
+int					free_errors(t_stack_node **a, char **args);
 void					free_split_args(char **arr);
 char					*ft_strjoin(char const *s1, char const *s2);
 char					*ft_strdup(const char *s);
@@ -62,8 +62,8 @@ t_stack_node			*find_max(t_stack_node *s);
 t_stack_node			*find_last(t_stack_node *s);
 t_stack_node			*get_cheapest(t_stack_node *stack);
 
-void					parste_and_init(char *str, t_stack_node **a);
-void					init_stack_a(t_stack_node **a, char **av);
+int						parste_and_init(char *str, t_stack_node **a);
+int						init_stack_a(t_stack_node **a, char **av);
 void					bring_on_top(t_stack_node **stack, t_stack_node *top,
 							bool i);
 void					set_cheapest(t_stack_node *stack);

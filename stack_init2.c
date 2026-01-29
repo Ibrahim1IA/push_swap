@@ -6,7 +6,7 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 16:45:50 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/27 17:20:54 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/29 02:43:29 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,13 @@ void	free_split_args(char **arr)
 	free(arr);
 }
 
-void	parste_and_init(char *str, t_stack_node **a)
+int	parste_and_init(char *str, t_stack_node **a)
 {
 	char	**args;
 
 	args = ft_split(str, ' ');
-	free(str);
-	init_stack_a(a, args);
+	if (!init_stack_a(a, args))
+		return (0);
 	free_split_args(args);
+	return (1);
 }

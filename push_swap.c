@@ -6,11 +6,12 @@
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 22:24:09 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/28 02:25:20 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/29 02:29:48 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 static void	free_errors_args(char **str)
 {
@@ -33,7 +34,9 @@ int	main(int ac, char **av)
 		return (0);
 	if (verify_args(&args, av + 1))
 		free_errors_args(&args);
-	parste_and_init(args, &a);
+	if (!parste_and_init(args, &a))
+		free_errors_args(&args);
+	free(args);
 	if (!stack_sorted(a))
 	{
 		if (stack_lenght(a) == 2)

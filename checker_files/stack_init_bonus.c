@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init_bonus.c                                 :+:      :+:    :+:   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 22:43:58 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/29 00:38:30 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:59:24 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-void	free_errors(t_stack_node **a, char **av)
+int	free_errors(t_stack_node **a, char **args)
 {
 	free_stack(a);
-	free_split_args(av);
-	write(2, "Error\n", 6);
-	exit(1);
+	free_split_args(args);
+	return (0);
 }
 
 static void	append_node(t_stack_node **s, int n)
@@ -66,20 +65,7 @@ static long	ft_atol(const char *nptr)
 	return (nbr * s);
 }
 
-t_stack_node	*get_cheapest(t_stack_node *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->cheapest)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
-}
-
-void	init_stack_a(t_stack_node **a, char **av)
+int	init_stack_a(t_stack_node **a, char **av)
 {
 	long			nbr;
 	int				i;
@@ -88,13 +74,14 @@ void	init_stack_a(t_stack_node **a, char **av)
 	while (av[i])
 	{
 		if (error_syntax(av[i]))
-			free_errors(a, av);
+			return (free_errors(a, av));
 		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			free_errors(a, av);
+			return (free_errors(a, av));
 		if (error_duplicate(*a, (int)nbr))
-			free_errors(a, av);
+			return (free_errors(a, av));
 		append_node(a, (int)nbr);
 		i++;
 	}
+	return (1);
 }

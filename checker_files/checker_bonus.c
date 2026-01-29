@@ -48,7 +48,9 @@ int	main(int ac, char **av)
 		return (0);
 	if (verify_args(&args, av + 1))
 		free_errors_args(&args);
-	parste_and_init(args, &a);
+	if (!parste_and_init(args, &a))
+		free_errors_args(&args);
+	free(args);
 	save_command(&commands);
 	performe_sorting(&a, &b, commands);
 	if (stack_sorted(a) && !b)
