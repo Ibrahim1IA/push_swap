@@ -1,17 +1,18 @@
 NAME = push_swap
-
+BONUS_NAME = checker
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall
 
 SRC = push_swap.c ft_split.c get_sorted_stack_in_array.c init_a.c push.c \
       reverse_rotatate.c rotate.c sort_stack.c stack_init.c stack_init2.c \
       stack_utils.c swap.c three_sort.c error_manager.c args_verif.c stack_init_utils.c
 
-BONUS_SRC = checker_bonus.c\
-			/checker/push_bonus.c /checker/reverse_rotatate_bonus.c \
-			/checker/rotate_bonus.c /checker/stack_init_bonus.c /checker/stack_init2_bonus.c \
-			/checker/stack_utils_bonus.c /checker/swap_bonus.c /checker/error_manager_bonus.c \
-			/checker/args_verif_bonus.c /checker/stack_init_utils_bonus.c
+BONUS_SRC = checker_files/checker_bonus.c checker_files/checker_utils_bonus.c \
+			checker_files/push_bonus.c checker_files/reverse_rotatate_bonus.c \
+			checker_files/rotate_bonus.c checker_files/stack_init_bonus.c checker_files/stack_init2_bonus.c \
+			checker_files/stack_utils_bonus.c checker_files/swap_bonus.c checker_files/error_manager_bonus.c \
+			checker_files/args_verif_bonus.c checker_files/ft_split_bonus.c \
+			checker_files/get_next_line/get_next_line.c checker_files/get_next_line/get_next_line_utils.c
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 OBJ = $(SRC:.c=.o)
@@ -25,13 +26,13 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(BONUS_OBJ)
-	$(CC) $(CFLAGS) $(BONUS_OBJ) -o checker/checker
+	$(CC) $(CFLAGS) $(BONUS_OBJ) -o $(BONUS_NAME)
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all
 

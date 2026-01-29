@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   stack_init_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 22:43:58 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/21 17:59:24 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/29 00:38:30 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 void	free_errors(t_stack_node **a, char **av)
 {
@@ -97,5 +97,4 @@ void	init_stack_a(t_stack_node **a, char **av)
 		append_node(a, (int)nbr);
 		i++;
 	}
-	init_sort_index(*a);
 }

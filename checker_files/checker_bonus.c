@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iissoufo <iissoufo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 21:50:19 by iissoufo          #+#    #+#             */
-/*   Updated: 2026/01/23 11:21:32 by iissoufo         ###   ########.fr       */
+/*   Updated: 2026/01/29 01:01:43 by iissoufo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int	main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	commands = NULL;
+	args = NULL;
 	if (ac == 1)
 		return (0);
 	if (verify_args(&args, av + 1))
 		free_errors_args(&args);
 	parste_and_init(args, &a);
-	free(args);
 	save_command(&commands);
 	performe_sorting(&a, &b, commands);
 	if (stack_sorted(a) && !b)

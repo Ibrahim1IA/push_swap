@@ -59,4 +59,9 @@ char					*ft_strdup(const char *s);
 size_t					ft_strlen(const char *s);
 size_t					ft_strlcpy(char *dst, const char *src, size_t size);
 
+t_stack_node			*find_last(t_stack_node *s);
+int						stack_lenght(t_stack_node *s);
+bool					stack_sorted(t_stack_node *s);
+char					**ft_split(char const *s, char c);
+
 # endif
